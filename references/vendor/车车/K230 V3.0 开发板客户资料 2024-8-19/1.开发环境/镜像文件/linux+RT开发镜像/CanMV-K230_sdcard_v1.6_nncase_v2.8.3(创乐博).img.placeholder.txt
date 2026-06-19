@@ -1,0 +1,15 @@
+# Large File Placeholder
+
+Original file: references\vendor\车车\K230 V3.0 开发板客户资料 2024-8-19\1.开发环境\镜像文件\linux+RT开发镜像\CanMV-K230_sdcard_v1.6_nncase_v2.8.3(创乐博).img
+Original size: 464.02 MB
+
+This binary file was not committed to Git because it is too large for a lightweight GitHub repository.
+The local full copy has been moved to:
+
+  .local-large-files\references\vendor\车车\K230 V3.0 开发板客户资料 2024-8-19\1.开发环境\镜像文件\linux+RT开发镜像\CanMV-K230_sdcard_v1.6_nncase_v2.8.3(创乐博).img
+
+Restore command from the repository root:
+
+  Move-Item -LiteralPath ".local-large-files\references\vendor\车车\K230 V3.0 开发板客户资料 2024-8-19\1.开发环境\镜像文件\linux+RT开发镜像\CanMV-K230_sdcard_v1.6_nncase_v2.8.3(创乐博).img" -Destination "references\vendor\车车\K230 V3.0 开发板客户资料 2024-8-19\1.开发环境\镜像文件\linux+RT开发镜像\CanMV-K230_sdcard_v1.6_nncase_v2.8.3(创乐博).img"
+
+Keep this placeholder tracked so the team knows the vendor file exists and where it belongs.

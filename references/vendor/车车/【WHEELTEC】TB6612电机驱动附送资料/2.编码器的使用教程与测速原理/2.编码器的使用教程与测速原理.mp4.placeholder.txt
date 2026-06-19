@@ -1,0 +1,15 @@
+# Large File Placeholder
+
+Original file: references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\2.编码器的使用教程与测速原理\2.编码器的使用教程与测速原理.mp4
+Original size: 52.13 MB
+
+This binary file was not committed to Git because it is too large for a lightweight GitHub repository.
+The local full copy has been moved to:
+
+  .local-large-files\references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\2.编码器的使用教程与测速原理\2.编码器的使用教程与测速原理.mp4
+
+Restore command from the repository root:
+
+  Move-Item -LiteralPath ".local-large-files\references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\2.编码器的使用教程与测速原理\2.编码器的使用教程与测速原理.mp4" -Destination "references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\2.编码器的使用教程与测速原理\2.编码器的使用教程与测速原理.mp4"
+
+Keep this placeholder tracked so the team knows the vendor file exists and where it belongs.

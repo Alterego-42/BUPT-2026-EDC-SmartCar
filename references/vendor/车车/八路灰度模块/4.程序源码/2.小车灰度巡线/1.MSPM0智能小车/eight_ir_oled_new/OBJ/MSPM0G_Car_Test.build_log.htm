@@ -1,0 +1,136 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.35.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: asdas abc, ASDSA, LIC=BUURY-ICH34-BSRYX-HNPIN-3DTAF-E9KIG
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.35.0.2
+Toolchain Path:  D:\KEIL\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.35.0.2
+Dialog DLL:      DARMCM1.DLL V1.19.4.0
+Target DLL:      CMSIS_AGDI.dll V1.33.0.0
+Dialog DLL:      TARMCM1.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\keil\MSPM0G_CAR_TEST.uvprojx
+Project File Date:  08/28/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'D:\KEIL\ARM\ARMCLANG\Bin'
+Rebuild target 'MSPM0G_CAR_TEST'
+Before Build - User command #1: cmd.exe /C "C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\keil\../../tools/keil/syscfg.bat 'C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\keil\' empty.syscfg"
+Using Sysconfig Tool from "C:\ti\sysconfig_1.21.1\sysconfig_cli.bat"
+"Update the file located at <sdk path>/tools/keil/syscfg.bat to use a different version"
+Running script...
+Validating...
+info: ADC_Senor(/ti/driverlib/ADC12) totalConversionRate: When Power Down Mode is set to Auto, ADC wakeup time may need to be considered in each sample window. Refer to the device specific data sheet for specifications on the ADC Wakeup Time.
+info: motor_PWM(/ti/driverlib/PWM): Peripheral does not retain register contents in STOP or STANDBY modes. User should take care to save and restore register configuration in application. See Retention Configuration section for more details.
+info: PWM_Servo(/ti/driverlib/PWM): Peripheral does not retain register contents in STOP or STANDBY modes. User should take care to save and restore register configuration in application. See Retention Configuration section for more details.
+info: SPI_W25Q64(/ti/driverlib/SPI): Peripheral does not retain register contents in STOP or STANDBY modes. User should take care to save and restore register configuration in application. See Retention Configuration section for more details.
+info: TIMER_1ms(/ti/driverlib/TIMER): Peripheral does not retain register contents in STOP or STANDBY modes. User should take care to save and restore register configuration in application. See Retention Configuration section for more details.
+info: UART_3(/ti/driverlib/UART): Peripheral does not retain register contents in STOP or STANDBY modes. User should take care to save and restore register configuration in application. See Retention Configuration section for more details.
+Generating Code (empty.syscfg)...
+Unchanged C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\ti_msp_dl_config.c...
+Unchanged C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\ti_msp_dl_config.h...
+Unchanged C:\ti\mspm0_sdk_2_02_00_05\MSPM0G_CAR_TEST\Event.dot...
+assembling startup_mspm0g350x_uvision.s...
+compiling bsp_key.c...
+compiling bsp_RGB.c...
+../BSP/usart0.c(33): warning: extra tokens at end of #ifdef directive [-Wextra-tokens]
+#ifdef COMPILE_ENT == 0
+                   ^
+                   //
+1 warning generated.
+compiling usart0.c...
+compiling bsp_beep_led.c...
+compiling bsp.c...
+compiling delay.c...
+compiling main.c...
+compiling ti_msp_dl_config.c...
+compiling bsp_vol_adc.c...
+compiling bsp_infrared_light.c...
+compiling bsp_ir_receiver.c...
+compiling bsp_motor.c...
+compiling bsp_encoder.c...
+compiling bsp_timer.c...
+compiling bsp_servo.c...
+compiling bsp_ultrasonic.c...
+../BSP/usart2/bsp_usart2.c(203): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+                                        Processing_Data(recv2_buff[recv2_length],&get_mode,&get_v);
+                                                                                 ^~~~~~~~~
+../BSP/bsp_usart_voice.h(12): note: passing argument to parameter 'data1' here
+void Processing_Data(uint8_t GET_data,uint8_t *data1,uint8_t *data2);
+                                               ^
+../BSP/usart2/bsp_usart2.c(203): warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+                                        Processing_Data(recv2_buff[recv2_length],&get_mode,&get_v);
+                                                                                           ^~~~~~
+../BSP/bsp_usart_voice.h(12): note: passing argument to parameter 'data2' here
+void Processing_Data(uint8_t GET_data,uint8_t *data1,uint8_t *data2);
+                                                              ^
+2 warnings generated.
+compiling bsp_usart2.c...
+compiling bsp_usart_voice.c...
+compiling bsp_flash_W25Q64.c...
+compiling bsp_usart3.c...
+compiling k210_use.c...
+compiling app_rgb.c...
+../BSP/OLED/oled.c(481): warning: passing 'char [3]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                OLED_ShowString(0,0,"x:",8,1);
+                                                    ^~~~
+../BSP/OLED/oled.c(291): note: passing argument to parameter 'chr' here
+void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 size1,u8 mode)
+                                   ^
+../BSP/OLED/oled.c(482): warning: passing 'char [3]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                OLED_ShowString(60,0,"y:",8,1);
+                                                     ^~~~
+../BSP/OLED/oled.c(291): note: passing argument to parameter 'chr' here
+void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 size1,u8 mode)
+                                   ^
+../BSP/OLED/oled.c(483): warning: passing 'char [3]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                OLED_ShowString(0,20,"w:",8,1);
+                                                     ^~~~
+../BSP/OLED/oled.c(291): note: passing argument to parameter 'chr' here
+void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 size1,u8 mode)
+                                   ^
+../BSP/OLED/oled.c(484): warning: passing 'char [3]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                                OLED_ShowString(60,20,"h:",8,1);
+                                                      ^~~~
+../BSP/OLED/oled.c(291): note: passing argument to parameter 'chr' here
+void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 size1,u8 mode)
+                                   ^
+4 warnings generated.
+compiling oled.c...
+compiling app_irremote.c...
+compiling app_motor.c...
+compiling bsp_PID_motor.c...
+compiling app_ir_track.c...
+compiling app_bluetooth.c...
+compiling bsp_bluetooth.c...
+linking...
+Program Size: Code=14188 RO-data=1116 RW-data=40 ZI-data=4600  
+FromELF: creating hex file...
+"..\OBJ\MSPM0G_Car_Test.axf" - 0 Error(s), 7 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: TexasInstruments
+                https://software-dl.ti.com/msp430/esd/MSPM0-CMSIS/MSPM0G1X0X_G3X0X/latest/exports/TexasInstruments.MSPM0G1X0X_G3X0X_DFP.1.3.1.pack
+                TexasInstruments.MSPM0G1X0X_G3X0X_DFP.1.3.1
+                Device Family Pack for Texas Instruments MSPM0G1X0X_G3X0X Series
+
+<h2>Collection of Component include folders:</h2>
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>

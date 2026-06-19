@@ -1,11 +1,17 @@
 # Vendor Materials
 
-The full vendor package has been moved here locally:
+The vendor package has been moved here:
 
 ```text
 references/vendor/车车/
 ```
 
-This folder is intentionally ignored by Git because it is about 3.2 GB and includes large files such as K230 images, installers, and tutorial videos. Keep it on the local machine for development and documentation lookup.
+Most files are tracked by Git. Files larger than 50 MB are replaced by `.placeholder.txt` files in their original locations, because GitHub does not handle very large binary files well.
 
-If a small PDF, pinout, or source example becomes essential to the project, copy only that specific file into a tracked documentation folder and note its source.
+The local full copies of those large files are stored under:
+
+```text
+.local-large-files/
+```
+
+That backup directory is intentionally ignored by Git.

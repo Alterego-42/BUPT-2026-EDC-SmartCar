@@ -21,7 +21,7 @@ The first milestone is a reliable baseline car:
 ├─ references/
 │  └─ vendor/
 │     ├─ README.md
-│     └─ 车车/                  # local vendor package, ignored by Git
+│     └─ 车车/                  # vendor package, large files use placeholders
 └─ README.md
 ```
 
@@ -36,6 +36,6 @@ The project keeps the control responsibilities separated:
 
 ## Notes
 
-The vendor material folder is large, about 3.2 GB, and contains installers, disk images, videos, and PDFs. It is kept locally under `references/vendor/车车/` but ignored by Git so the GitHub repository remains lightweight.
+The vendor material folder contains installers, disk images, videos, PDFs, and example projects. Most files are tracked directly. Files larger than 50 MB are represented by `.placeholder.txt` files at their original paths, while the local full copies are stored under `.local-large-files/`.
 
 See the electrical draft in `docs/` before wiring or powering any module.

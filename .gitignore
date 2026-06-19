@@ -1,5 +1,5 @@
-# Local vendor packages are too large for normal Git history.
-/references/vendor/车车/
+# Local copies of large vendor files replaced by placeholders in Git.
+/.local-large-files/
 
 # Build outputs
 build/

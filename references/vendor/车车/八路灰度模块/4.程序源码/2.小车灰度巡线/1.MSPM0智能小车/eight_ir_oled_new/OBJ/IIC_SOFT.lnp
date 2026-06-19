@@ -1,0 +1,20 @@
+--cpu Cortex-M0+
+"..\obj\startup_mspm0g350x_uvision.o"
+"..\obj\ti_msp_dl_config.o"
+"..\obj\main.o"
+"..\obj\delay.o"
+"..\obj\usart0.o"
+"..\obj\bsp_beep_led.o"
+"..\obj\oled.o"
+"..\obj\bsp_encoder.o"
+"..\obj\bsp_motor.o"
+"..\obj\bsp_timer.o"
+"..\obj\bsp_ir_eight.o"
+"..\obj\app_motor.o"
+"..\obj\bsp_pid_motor.o"
+"..\obj\app_irtracking_eight.o"
+"..\obj\retarget_io.o"
+--library_type=microlib --strict --scatter ".\mspm0g3507.sct"
+../../source/ti/driverlib/lib/keil/m0p/mspm0g1x0x_g3x0x/driverlib.a --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\IIC_SOFT.map" -o ..\OBJ\IIC_SOFT.axf

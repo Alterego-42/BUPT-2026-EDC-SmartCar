@@ -1,0 +1,15 @@
+# Large File Placeholder
+
+Original file: references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\1.用户手册与使用教程\TB6612带稳压电机驱动模块（D153C）使用教程视频.mp4
+Original size: 1563.45 MB
+
+This binary file was not committed to Git because it is too large for a lightweight GitHub repository.
+The local full copy has been moved to:
+
+  .local-large-files\references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\1.用户手册与使用教程\TB6612带稳压电机驱动模块（D153C）使用教程视频.mp4
+
+Restore command from the repository root:
+
+  Move-Item -LiteralPath ".local-large-files\references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\1.用户手册与使用教程\TB6612带稳压电机驱动模块（D153C）使用教程视频.mp4" -Destination "references\vendor\车车\【WHEELTEC】TB6612电机驱动附送资料\1.用户手册与使用教程\TB6612带稳压电机驱动模块（D153C）使用教程视频.mp4"
+
+Keep this placeholder tracked so the team knows the vendor file exists and where it belongs.
