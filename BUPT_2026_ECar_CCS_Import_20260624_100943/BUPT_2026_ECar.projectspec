@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSpec>
+    <applicability>
+        <when>
+            <context
+                deviceFamily="ARM"
+                deviceId="MSPM0G3507"
+            />
+        </when>
+    </applicability>
+
+    <project
+        title="BUPT_2026_ECar"
+        name="BUPT_2026_ECar_LP_MSPM0G3507_nortos_ticlang"
+        configurations="Debug"
+        toolChain="TICLANG"
+        connection="TIXDS110_Connection.xml"
+        device="MSPM0G3507"
+        ignoreDefaultDeviceSettings="true"
+        ignoreDefaultCCSSettings="true"
+        products="MSPM0-SDK;sysconfig"
+        compilerBuildOptions="
+            -I${PROJECT_ROOT}
+            -I${PROJECT_ROOT}/src
+            -I${PROJECT_ROOT}/${ConfigName}
+            -O2
+            @device.opt
+            -I${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include
+            -I${COM_TI_MSPM0_SDK_INSTALL_DIR}/source
+            -gdwarf-3
+            -mcpu=cortex-m0plus
+            -march=thumbv6m
+            -mfloat-abi=soft
+            -mthumb
+            -Wall
+        "
+        linkerBuildOptions="
+            -ldevice.cmd.genlibs
+            -L${COM_TI_MSPM0_SDK_INSTALL_DIR}/source
+            -L${PROJECT_ROOT}
+            -L${PROJECT_BUILD_DIR}/syscfg
+            -Wl,--rom_model
+            -Wl,--warn_sections
+            -L${CG_TOOL_ROOT}/lib
+            -llibc.a
+        "
+        sysConfigBuildOptions="
+            --output .
+            --product ${COM_TI_MSPM0_SDK_INSTALL_DIR}/.metadata/product.json
+            --compiler ticlang
+        "
+        sourceLookupPath="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/ti/driverlib"
+        description="BUPT 2026 EDC smart car project for LP-MSPM0G3507">
+        <property name="buildProfile" value="release"/>
+        <property name="isHybrid" value="true"/>
+
+        <file path="BUPT_2026_ECar.syscfg" openOnCreation="true" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="README_TASKS.md" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+
+        <file path="src/board_pins.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/encoder.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/encoder.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/grayscale.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/grayscale.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/i2c_bus.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/i2c_bus.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/imu.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/imu.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/k230.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/k230.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/line_controller.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/line_controller.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/main.c" openOnCreation="true" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/motor.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/motor.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/oled.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/oled.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/pca9685.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/pca9685.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/tasks.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/tasks.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/ui.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+        <file path="src/ui.h" openOnCreation="false" excludeFromBuild="false" action="copy">
+        </file>
+    </project>
+</projectSpec>
