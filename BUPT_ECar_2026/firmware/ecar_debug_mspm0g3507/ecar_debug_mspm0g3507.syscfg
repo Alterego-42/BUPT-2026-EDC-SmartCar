@@ -1,0 +1,122 @@
+/**
+ * BUPT 2026 E-Car chassis debug firmware.
+ * Target: TI LP-MSPM0G3507 LaunchPad, no RTOS.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+// @cliArgs --board /ti/boards/LP_MSPM0G3507 --rtos nortos
+
+const Board   = scripting.addModule("/ti/driverlib/Board");
+const GPIO    = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const PWM     = scripting.addModule("/ti/driverlib/PWM", {}, false);
+const SYSCTL  = scripting.addModule("/ti/driverlib/SYSCTL");
+const SYSTICK = scripting.addModule("/ti/driverlib/SYSTICK");
+const UART    = scripting.addModule("/ti/driverlib/UART", {}, false);
+
+const GPIO_MOTOR = GPIO.addInstance();
+const GPIO_GRAY  = GPIO.addInstance();
+const GPIO_ENC   = GPIO.addInstance();
+const GPIO_UI    = GPIO.addInstance();
+const PWM_MOTOR  = PWM.addInstance();
+const UART_IMU   = UART.addInstance();
+
+const mfclkGate = system.clockTree["MFCLKGATE"];
+mfclkGate.enable = true;
+
+/* TB6612 direction and standby pins. PWM_L/PWM_R are configured below by PWM_MOTOR. */
+GPIO_MOTOR.$name = "GPIO_MOTOR";
+GPIO_MOTOR.associatedPins.create(5);
+GPIO_MOTOR.associatedPins[0].$name       = "L_IN1";
+GPIO_MOTOR.associatedPins[0].pin.$assign = "PA8";
+GPIO_MOTOR.associatedPins[1].$name       = "L_IN2";
+GPIO_MOTOR.associatedPins[1].pin.$assign = "PA27";
+GPIO_MOTOR.associatedPins[2].$name       = "R_IN1";
+GPIO_MOTOR.associatedPins[2].pin.$assign = "PB0";
+GPIO_MOTOR.associatedPins[3].$name       = "R_IN2";
+GPIO_MOTOR.associatedPins[3].pin.$assign = "PB6";
+GPIO_MOTOR.associatedPins[4].$name       = "STBY";
+GPIO_MOTOR.associatedPins[4].pin.$assign = "PB18";
+
+/* 8-channel grayscale module: AD0/AD1/AD2 select channel, OUT returns digital level. */
+GPIO_GRAY.$name = "GPIO_GRAY";
+GPIO_GRAY.associatedPins.create(4);
+GPIO_GRAY.associatedPins[0].$name       = "AD0";
+GPIO_GRAY.associatedPins[0].pin.$assign = "PB7";
+GPIO_GRAY.associatedPins[1].$name       = "AD1";
+GPIO_GRAY.associatedPins[1].pin.$assign = "PB8";
+GPIO_GRAY.associatedPins[2].$name       = "AD2";
+GPIO_GRAY.associatedPins[2].pin.$assign = "PA22";
+GPIO_GRAY.associatedPins[3].$name       = "OUT";
+GPIO_GRAY.associatedPins[3].direction   = "INPUT";
+GPIO_GRAY.associatedPins[3].pin.$assign = "PB4";
+
+/* Rear wheel encoders only. A phase triggers both edges; B phase gives direction. */
+GPIO_ENC.$name = "GPIO_ENCODER";
+GPIO_ENC.associatedPins.create(4);
+GPIO_ENC.associatedPins[0].$name       = "LR_A";
+GPIO_ENC.associatedPins[0].direction   = "INPUT";
+GPIO_ENC.associatedPins[0].interruptEn = true;
+GPIO_ENC.associatedPins[0].polarity    = "RISE_FALL";
+GPIO_ENC.associatedPins[0].pin.$assign = "PB19";
+GPIO_ENC.associatedPins[1].$name       = "LR_B";
+GPIO_ENC.associatedPins[1].direction   = "INPUT";
+GPIO_ENC.associatedPins[1].pin.$assign = "PB24";
+GPIO_ENC.associatedPins[2].$name       = "RR_A";
+GPIO_ENC.associatedPins[2].direction   = "INPUT";
+GPIO_ENC.associatedPins[2].interruptEn = true;
+GPIO_ENC.associatedPins[2].polarity    = "RISE_FALL";
+GPIO_ENC.associatedPins[2].pin.$assign = "PA26";
+GPIO_ENC.associatedPins[3].$name       = "RR_B";
+GPIO_ENC.associatedPins[3].direction   = "INPUT";
+GPIO_ENC.associatedPins[3].pin.$assign = "PA25";
+
+/* One-button UI plus two external LEDs and one active buzzer module. */
+GPIO_UI.$name = "GPIO_UI";
+GPIO_UI.associatedPins.create(4);
+GPIO_UI.associatedPins[0].$name            = "START_KEY";
+GPIO_UI.associatedPins[0].direction        = "INPUT";
+GPIO_UI.associatedPins[0].internalResistor = "PULL_UP";
+GPIO_UI.associatedPins[0].pin.$assign      = "PB2";
+GPIO_UI.associatedPins[1].$name            = "BEEP";
+GPIO_UI.associatedPins[1].initialValue     = "SET";
+GPIO_UI.associatedPins[1].pin.$assign      = "PB13";
+GPIO_UI.associatedPins[2].$name            = "LED_R";
+GPIO_UI.associatedPins[2].pin.$assign      = "PB17";
+GPIO_UI.associatedPins[3].$name            = "LED_G";
+GPIO_UI.associatedPins[3].pin.$assign      = "PA15";
+
+/* 20 kHz edge-aligned PWM on PA12/PA13: period = 1600 at 32 MHz. */
+PWM_MOTOR.$name                      = "PWM_MOTOR";
+PWM_MOTOR.clockPrescale              = 1;
+PWM_MOTOR.timerCount                 = 1600;
+PWM_MOTOR.peripheral.$assign         = "TIMG0";
+PWM_MOTOR.peripheral.ccp0Pin.$assign = "PA12";
+PWM_MOTOR.peripheral.ccp1Pin.$assign = "PA13";
+PWM_MOTOR.PWM_CHANNEL_0.$name        = "PWM_L";
+PWM_MOTOR.PWM_CHANNEL_0.dutyCycle    = 0;
+PWM_MOTOR.PWM_CHANNEL_1.$name        = "PWM_R";
+PWM_MOTOR.PWM_CHANNEL_1.dutyCycle    = 0;
+
+/* Optional ATK-MS901M/JY901-style IMU on PA10/PA11. The car can run without it. */
+UART_IMU.$name                    = "UART_IMU";
+UART_IMU.uartClkSrc               = "MFCLK";
+UART_IMU.enabledInterrupts        = ["RX"];
+UART_IMU.targetBaudRate           = 115200;
+UART_IMU.peripheral.rxPin.$assign = "PA11";
+UART_IMU.peripheral.txPin.$assign = "PA10";
+UART_IMU.txPinConfig.$name        = "UART_IMU_TX";
+UART_IMU.rxPinConfig.$name        = "UART_IMU_RX";
+
+/* 1 ms system tick at the default 32 MHz CPU clock. */
+SYSTICK.period          = 32000;
+SYSTICK.periodEnable    = true;
+SYSTICK.systickEnable   = true;
+SYSTICK.interruptEnable = true;
+
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.clockTreeEn           = true;
+
+Board.peripheral.$suggestSolution          = "DEBUGSS";
+Board.peripheral.swclkPin.$suggestSolution = "PA20";
+Board.peripheral.swdioPin.$suggestSolution = "PA19";
+UART_IMU.peripheral.$suggestSolution       = "UART0";
