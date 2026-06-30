@@ -1,0 +1,19 @@
+# Python runtime cache
+__pycache__/
+*.py[cod]
+
+# Runtime logs and one-off diagnostic captures
+*.log
+k230相关/target_tracking_delivery_20260627/*.jpg
+k230相关/target_tracking_delivery_20260627/*.png
+k230相关/target_tracking_delivery_20260627/k230/logs/
+k230相关/target_tracking_delivery_20260627/stm32/logs/
+
+# Generated firmware build products
+firmware/ecar_debug_mspm0g3507/true
+firmware/ecar_debug_mspm0g3507/ticlang/*.map
+firmware/ecar_debug_mspm0g3507/ticlang/*.obj
+firmware/ecar_debug_mspm0g3507/ticlang/*.out
+
+# Old reference prebuilt binaries are large and regenerated from source.
+k230相关/target_tracking_delivery_20260627/stm32/prebuilt/

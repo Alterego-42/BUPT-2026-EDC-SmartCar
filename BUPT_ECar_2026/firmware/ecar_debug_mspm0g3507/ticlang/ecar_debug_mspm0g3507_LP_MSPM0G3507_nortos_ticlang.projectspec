@@ -59,6 +59,10 @@
         <file path="../src/board_config.h" openOnCreation="true" excludeFromBuild="false" action="copy"/>
         <file path="../src/encoder.c" openOnCreation="false" excludeFromBuild="false" action="copy"/>
         <file path="../src/encoder.h" openOnCreation="false" excludeFromBuild="false" action="copy"/>
+        <file path="../src/gimbal.c" openOnCreation="false" excludeFromBuild="false" action="copy"/>
+        <file path="../src/gimbal.h" openOnCreation="false" excludeFromBuild="false" action="copy"/>
+        <file path="../src/gimbal_route.c" openOnCreation="false" excludeFromBuild="false" action="copy"/>
+        <file path="../src/gimbal_route.h" openOnCreation="false" excludeFromBuild="false" action="copy"/>
         <file path="../src/grayscale.c" openOnCreation="false" excludeFromBuild="false" action="copy"/>
         <file path="../src/grayscale.h" openOnCreation="false" excludeFromBuild="false" action="copy"/>
         <file path="../src/imu.c" openOnCreation="false" excludeFromBuild="false" action="copy"/>
